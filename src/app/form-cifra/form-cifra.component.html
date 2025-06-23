@@ -1,0 +1,56 @@
+<mat-card class="mat-elevation-z8 card-form">
+  <h2>Gerador de Cifras</h2>
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Título</mat-label>
+    <input matInput [(ngModel)]="titulo" required />
+    <mat-error *ngIf="titulo === ''">Título é obrigatório</mat-error>
+  </mat-form-field>
+  <div class="linha-campos">
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Tempo (BPM)</mat-label>
+      <input matInput [(ngModel)]="tempo" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Compasso</mat-label>
+      <input matInput [(ngModel)]="compasso" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="campo">
+      <mat-label>Tonalidade</mat-label>
+      <mat-select [(ngModel)]="tonalidade" required>
+        <mat-option *ngFor="let tom of tons" [value]="tom">{{
+          tom
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <h3>Seções</h3>
+  <div class="secoes-container">
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Nome da Seção</mat-label>
+      <input matInput [(ngModel)]="novaSecao.nome" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="half-width">
+      <mat-label>Acordes</mat-label>
+      <input matInput [(ngModel)]="novaSecao.acordes" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="adicionarSecao()">
+      Adicionar Seção
+    </button>
+  </div>
+  <ul>
+    <li *ngFor="let sec of secoes">
+      {{ sec.nome }}: {{ formatarAcordes(sec.acordes) }}
+    </li>
+  </ul>
+  <button mat-raised-button color="accent" (click)="gerarPDF()">
+    Gerar PDF
+  </button>
+</mat-card>
+<app-preview-cifra
+  [titulo]="titulo"
+  [tempo]="tempo"
+  [compasso]="compasso"
+  [tonalidade]="tonalidade"
+  [secoes]="secoes"
+>
+</app-preview-cifra>

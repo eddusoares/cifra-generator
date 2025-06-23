@@ -1,0 +1,10 @@
+<div class="preview" *ngIf="titulo">
+  <h3>{{ titulo.toUpperCase() }}</h3>
+  <p>
+    Tempo: {{ tempo }} BPM ({{ compasso }}) &nbsp;&nbsp;&nbsp;&nbsp; Tom:
+    {{ tonalidade }}
+  </p>
+  <div *ngFor="let sec of secoes">
+    <strong>{{ sec.nome }}:</strong> {{ formatarAcordes(sec.acordes) }}
+  </div>
+</div>

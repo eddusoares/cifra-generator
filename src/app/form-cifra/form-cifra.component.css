@@ -1,0 +1,121 @@
+.container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+input {
+  margin-top: 5px;
+  padding: 6px 10px;
+  width: 80%;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #303f9f;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+mat-card {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+mat-card.card-form {
+  max-width: 650px;
+  margin: 40px auto;
+  padding: 32px 28px 28px 28px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 32px 0 rgba(60, 60, 90, 0.13), 0 1.5px 6px 0 rgba(60, 60, 90, 0.08);
+  transition: box-shadow 0.3s;
+}
+
+mat-card.card-form:hover {
+  box-shadow: 0 12px 40px 0 rgba(60, 60, 90, 0.18), 0 2px 8px 0 rgba(60, 60, 90, 0.10);
+}
+
+.linha-campos {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.linha-campos .campo {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+mat-form-field.full-width {
+  width: 100%;
+}
+
+h2 {
+  margin-bottom: 24px;
+  font-weight: 600;
+  color: #3f51b5;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-weight: bold;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f51b5;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(60, 60, 90, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  background-color: #303f9f;
+  box-shadow: 0 4px 16px rgba(60, 60, 90, 0.13);
+}
