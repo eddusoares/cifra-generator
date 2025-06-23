@@ -8,15 +8,10 @@ export class AcordeUtilsService {
       acordes
         .split(/\s*,\s*|\s+/)
         .map((raw) => {
-          // Trata acordes com baixo (barra)
           const [acorde, baixoRaw] = raw.split('/');
           const baixo = baixoRaw ? '/' + baixoRaw.toUpperCase() : '';
-
-          // Regex: nota, acidente, menor, diminuto, sufixos
-          // Ex: bo7, co, do, fo, go, ao, eo, fo7, etc.
           const match = acorde.match(/^([A-Ga-g])(b?)(#?)(m|o)?(.*)$/);
           if (!match) return raw.toUpperCase() + baixo;
-
           let [_, nota, bemol, sustenido, tipo, sufixos] = match;
           nota = nota.toUpperCase();
           bemol = bemol || '';
@@ -24,16 +19,26 @@ export class AcordeUtilsService {
           tipo = tipo || '';
           sufixos = sufixos || '';
 
-          // Diminuto: "o" minúsculo após a nota
+          // Tratamento especial para sufixos numéricos
+          let formattedSufixos = sufixos;
+          // Ex: 7913 -> 7(9)(13)
+          if (/^7?9?13?$/.test(sufixos)) {
+            formattedSufixos = '';
+            if (sufixos.includes('7')) formattedSufixos += '7';
+            if (sufixos.includes('9')) formattedSufixos += '(9)';
+            if (sufixos.includes('13')) formattedSufixos += '(13)';
+          } else {
+            // Outros sufixos, apenas coloca em maiúsculo
+            formattedSufixos = sufixos.toUpperCase();
+          }
+
           if (tipo === 'o') {
-            return `${nota}${sustenido}${bemol}°${sufixos.toUpperCase()}${baixo}`;
+            return `${nota}${sustenido}${bemol}°${formattedSufixos}${baixo}`;
           }
-          // Menor
           if (tipo === 'm') {
-            return `${nota}${sustenido}${bemol}m${sufixos.toUpperCase()}${baixo}`;
+            return `${nota}${sustenido}${bemol}m${formattedSufixos}${baixo}`;
           }
-          // Maior ou outros
-          return `${nota}${sustenido}${bemol}${sufixos.toUpperCase()}${baixo}`;
+          return `${nota}${sustenido}${bemol}${formattedSufixos}${baixo}`;
         })
         .join(' | ') +
       ' |'
